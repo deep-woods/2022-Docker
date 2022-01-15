@@ -4,10 +4,11 @@ Docker forest
 
 <br>
 
-[Basics](#basiocs)
-[Port](#port)
-[Volume](#volume)
-[Dockerfile](#dockerfile)
+[Basics](#basiocs)  
+[Port](#port)  
+[Volume](#volume)  
+[Dockerfile](#dockerfile)  
+[Image](#image)  
 
 <br>
 <br>
@@ -105,14 +106,31 @@ Docker forest
 <br> 
 
 
-## <span id="dockerfile">🐳 Docker file</span>
+## <span id="dockerfile">🐳Dockerfile</span>
 
-**Create docker file**d
+**Create docker file**
+
+We don't have to mount a `volume` any longer if we build our own `image`. 
+
+  - In your editor, create a `🐳Dockerfile` in the project root directory.
+    - When building an `image`, you don't build one from scratch;
+    - you will always build it upon an existing base image (based on the latest nginx, for instance).
+      - `FROM nginx:latest`
+      - `ADD . /usr/share/nginx/html` (everything in the root folder)
 
 <br>
 
+## <span id="image">🖼️Image</span>
 
-****
+**Build an image**
+from the 🐳Dockerfile
+
+  - `docker build --tag dir_name:latest .`
+    - The dot(`.`) matters here.
+    - `[1/2] FROM docker.io/library/nginx:latest`
+    - `[2/2] ADD . /usr/share/nginx/html`
+
+  - `docker run --name CONTAINER_NAME PORT_NUM:80 -d IMAGE_NAME:latest`
 
 <br>
 
