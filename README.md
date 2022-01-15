@@ -11,7 +11,6 @@ Docker forest
 [Image](#image)  
 
 <br>
-<br>
 
 ## <span id="basics">Basics</span>
 
@@ -24,10 +23,14 @@ Docker forest
 
   **Run a container**
 
+<img src="https://github.com/Coding-Forest/2022-Docker/blob/main/images/00%20docker%20run%20nginx.png" width=550 />
+
     - `docker run -d nginx:latest`
       - `-d` tag
 
   **Stop a container**
+
+<img src="https://github.com/Coding-Forest/2022-Docker/blob/main/images/01%20docker%20stop.png" width=550 />
 
     - `docker stop CONTAINER_ID`
 
@@ -76,6 +79,9 @@ Docker forest
 
   **Exposing multiple ports⚓⚓**
 
+  <img src="https://github.com/Coding-Forest/2022-Docker/blob/main/images/02%20docker%20run%20on%20different%20port.png" width=550 />
+<img src="https://github.com/Coding-Forest/2022-Docker/blob/main/images/03%20docker%20run%20multiple%20ports.png" width=550 />
+
     - `docker run -d -p localhost1:PORT -p localhost2:PORT nginx:latest`
     - `docker run -d -p 8080:80 -p 3000:80 nginx:latest`
 
@@ -83,7 +89,11 @@ Docker forest
 
 ## <span id="volumn">🧳Volume</span>
 
+<img src="https://github.com/Coding-Forest/2022-Docker/blob/main/images/05%20mounts%20volume.png" width=550 />
+
   **Volumnes between host and container**
+
+<img src="https://github.com/Coding-Forest/2022-Docker/blob/main/images/06%20inside%20container.png" width=550 />
 
     - `docker run --name dir_name -v $(cd) -d -p 8080:80 nginx`
   
@@ -124,6 +134,8 @@ We don't have to mount a `volume` any longer if we build our own `image`.
 
 **Build an image**
 from the 🐳Dockerfile
+
+<img src="https://github.com/Coding-Forest/2022-Docker/blob/main/images/07%20build%20image.png" width=550 />
 
   - `docker build --tag dir_name:latest .`
     - The dot(`.`) matters here.
