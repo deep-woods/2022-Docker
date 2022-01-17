@@ -7,24 +7,28 @@ Docker `images` are read-only templates🖼️ used to build `containers`. Conta
 
 <br>
 
+<span id="top">Learn index</span>
+
 [Basics](#basiocs)  
 [⚓Port](#port)  
 [Volume](#volume)  
 [🐳Dockerfile](#dockerfile)  
 [Image](#image)  
-[Node JS and Express JS](#js)
-[🐳Dockerise API](#dockerapi)
-[🖼️Reduce image size](#imagesize)
-[Tags, Versioning, and Tagging](#versiontag)
-[🐳Docker Registraies](#registry)
-[🐳Docker inspect](#inspect)
-[🐳Docker log](#log)
-[🐳Docker exec](#exec)
+[Node JS and Express JS](#js)  
+[🐳Dockerise API](#dockerapi)   
+[🖼️Reduce image size](#imagesize)   
+[Tags, Versioning, and Tagging](#versiontag)   
+[🐳Docker Registraies](#registry)   
+[🐳Docker inspect](#inspect)   
+[🐳Docker log](#log)   
+[🐳Docker exec](#exec)   
 
 
 <br>
 
 ## <span id="basics">Basics</span>
+
+[[☝️top]](#top)
 
   **Check the list of running containers**
 
@@ -72,6 +76,8 @@ Docker `images` are read-only templates🖼️ used to build `containers`. Conta
 
 ## <span id="port">⚓Port</span>
 
+[[☝️top]](#top)
+
   **Format process status data**
 
     - format: `docker ps --format="ID\t{{.ID}}\nNAME\t{{.Names}}\nIMAGE\t{{.Image}}\nPORTS\t{{.Ports}}\nCOMMAND\t{{.Command}}\nCREATED\t{{.CreatedAt}}\nSTATUS\t{{.Status}}\n"`
@@ -81,6 +87,8 @@ Docker `images` are read-only templates🖼️ used to build `containers`. Conta
 
 
 **Expose a port⚓**</span>
+
+[[☝️top]](#top)
 
 <img src="https://github.com/Coding-Forest/2022-Docker/blob/main/images/FCC%20Docker%2001.png" width=600 />
 
@@ -106,6 +114,8 @@ Docker `images` are read-only templates🖼️ used to build `containers`. Conta
 <br>
 
 ## <span id="volumn">🧳Volume</span>
+
+[[☝️top]](#top)
 
 <img src="https://github.com/Coding-Forest/2022-Docker/blob/main/images/FCC%20Docker%2003.png" width=600 />
 <img src="https://github.com/Coding-Forest/2022-Docker/blob/main/images/FCC%20Docker%2004.png" width=600 />
@@ -143,6 +153,8 @@ Docker `images` are read-only templates🖼️ used to build `containers`. Conta
 
 ## <span id="dockerfile">🐳Dockerfile</span>
 
+[[☝️top]](#top)
+
 <img src="https://github.com/Coding-Forest/2022-Docker/blob/main/images/FCC%20Docker%2007.png" width=600 />
 
 
@@ -159,6 +171,8 @@ We don't have to mount a `volume` any longer if we build our own `image`.
 <br>
 
 ## <span id="image">🖼️Image</span>
+
+[[☝️top]](#top)
 
 <img src="https://github.com/Coding-Forest/2022-Docker/blob/main/images/FCC%20Docker%2008.png" width=600 />
 
@@ -178,6 +192,8 @@ from the 🐳Dockerfile
 <br>
 
 ## <span id="js">**Node JS and Express JS**</span>
+
+[[☝️top]](#top)
 
 Express.js: a back end web application framework for Node.js; designed for building web applications and APIs.
 
@@ -204,6 +220,8 @@ Express.js: a back end web application framework for Node.js; designed for build
 <br>
 
 ## <span id="dockerapi">**🐳Dockerise API**</span>
+
+[[☝️top]](#top)
 
   - Step 1. Create an API ([see above](#js))
   - Step 2. Create 🐳Dockerfile
@@ -244,6 +262,8 @@ Now we have an image for the `user-service-api` in `node` and `express.js`.
 
 ## <span id="imagesize">**🐳Reduce image size**</span>
 
+[[☝️top]](#top)
+
 **Pull alpine image**
 
   - `docker pull ENGINE_NAME:lts-alpine`: look for supported tag.
@@ -252,6 +272,8 @@ Now we have an image for the `user-service-api` in `node` and `express.js`.
 <br>
 
 ## <span id="versiontag">**Tags, Versioning, and Tagging**</span>
+
+[[☝️top]](#top)
 
 <img src="https://github.com/Coding-Forest/2022-Docker/blob/main/images/FCC%20Docker%2009.png" width=600 />
 <img src="https://github.com/Coding-Forest/2022-Docker/blob/main/images/FCC%20Docker%2010.png" width=600 />
@@ -271,6 +293,8 @@ Safe.
 <br>
 
 ## <span id="registry">🐳**Docker Registries**</span>
+
+[[☝️top]](#top)
 
 <img src="https://github.com/Coding-Forest/2022-Docker/blob/main/images/FCC%20Docker%2011.png" width=600 />
 <img src="https://github.com/Coding-Forest/2022-Docker/blob/main/images/FCC%20Docker%2012.png" width=600 />
@@ -297,11 +321,15 @@ Two types of registries
 
 ## <span id="inspect">**🐳Docker inspect**</span>
 
+[[☝️top]](#top)
+
   - `docker inspect CONTAINER_ID`
 
 <br>
 
 ## <span id="log">**🐳Docker log**</span>
+
+[[☝️top]](#top)
 
   - `docker logs CONTAINER_ID`
   - `docker logs --help`
@@ -310,11 +338,14 @@ Two types of registries
 
 ## <span id="exec">**🐳Docker exec**</span>
 
-  - ``
+[[☝️top]](#top)
+
   - `docker exec --help`
 
 <br>
 
 ### <span id="ref">References</span>
+
+[[☝️top]](#top)
 
   - freeCodeCamp (2020) Docker and Kubernetes - Full Course for Beginners https://www.youtube.com/watch?v=Wf2eSG3owoA&t=1615s
