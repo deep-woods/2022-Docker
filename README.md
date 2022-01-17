@@ -318,5 +318,3 @@ Two types of registries
 ### <span id="ref">References</span>
 
   - freeCodeCamp (2020) Docker and Kubernetes - Full Course for Beginners https://www.youtube.com/watch?v=Wf2eSG3owoA&t=1615s
-
-
