@@ -623,7 +623,7 @@ Who manages mounting? - `Storage drivers`
 
 [[☝️top]](#top)
 
-<img src="https://github.com/Coding-Forest/2022-Docker/blob/main/images/Doker%20compose%2002.png" width=600 />
+<img src="https://github.com/Coding-Forest/2022-Docker/blob/main/images/Doker%20compose%2002.png" width=1000 />
 
 
     docker-compose.yaml
@@ -786,9 +786,9 @@ Also make sure to link the MySQL and the webapp container.
 
 **Docker compose versions**
 
-<img src="https://github.com/Coding-Forest/2022-Docker/blob/main/images/Doker%20compose%2001.png" width=600 />
+<img src="https://github.com/Coding-Forest/2022-Docker/blob/main/images/Doker%20compose%2001.png" width=1000 />
 
-<img src="https://github.com/Coding-Forest/2022-Docker/blob/main/images/Doker%20compose%2002.png" width=600 />
+<img src="https://github.com/Coding-Forest/2022-Docker/blob/main/images/Doker%20compose%2002.png" width=1000 />
 
 <br>
 
