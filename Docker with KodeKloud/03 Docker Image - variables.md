@@ -1,4 +1,4 @@
-# <span id='top'>03 Docker Image - Variables, Commands vs Entrypoint</span>
+# <span id='top'>03 🐳Docker Image - Variables, Commands vs Entrypoint</span>
 
 <br>
 
@@ -67,7 +67,7 @@ Search for Variables: `grep -A <line number> <search keyword>`
 
 <br>
 
-Search for variable data: `docker exec -it blue-app env`
+Search for variable data: 🐳`Docker exec -it blue-app env`
 
     $ docker exec -it blue-app env
     PATH=/usr/local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
@@ -120,8 +120,8 @@ Search for variable data: `docker exec -it blue-app env`
 - a shell listens for inputs from a terminal. If it cannot find a terminal, it exits.
 - by default Docker does not attach a terminal to a container when it is run.
   - how do you specify a different command to start the container.
-    - Solution 1. append a command to the `docker run` command and it overrides the default command
-- Tag: `docker run --entrypoint [command]`: overrides the pre-defined `ENTRYPOINT`.
+    - Solution 1. append a command to the 🐳`Docker run` command and it overrides the default command
+- Tag: 🐳`Docker run --entrypoint [command]`: overrides the pre-defined `ENTRYPOINT`.
 
 <br>
 

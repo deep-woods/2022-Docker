@@ -1,4 +1,4 @@
-# <span id='top'> </span>
+# <span id='top'>03 🐳Docker Image</span>
 
 <br>
 
@@ -13,7 +13,7 @@
 
 [[Top]](#top)
 
-Setting up an environment on a new machine is a tedious task. `Docker Image` can save us from having to repeat ourselves on tedious jobs.
+Setting up an environment on a new machine is a tedious task. 🐳`Docker Image` can save us from having to repeat ourselves on tedious jobs.
 
 **Process**
 
@@ -30,7 +30,7 @@ Setting up an environment on a new machine is a tedious task. `Docker Image` can
 
 - Syntax: `[INSTRUCTION] arcument`
 
-  - `FROM`: every `Dockerfile` starts with this.
+  - `FROM`: every 🐳`Dockerfile` starts with this.
   - `RUN`
   - `ENTRYPOINT`: specify a command that will be run when the image is run as a container.
 
@@ -56,7 +56,7 @@ Setting up an environment on a new machine is a tedious task. `Docker Image` can
 
 <br>
 
-- `docker build Dockerfile -t forest/custom-app`
+- 🐳`Docker build Dockerfile -t forest/custom-app`
 - All the layers build are cached so the layered architecture helps you restart docker build from that particular step in case it fails. Or, if you were to add new steps in the build process you wouldn't have to start all over again.
   - This makes `image building` faster.
   - This is helpful especially when you update source code of your application as it may change more frequently
@@ -145,7 +145,7 @@ Setting up an environment on a new machine is a tedious task. `Docker Image` can
 
 ### History!
 
-`history`: build `Dockerfile` from the history of your hands-on building process.
+`history`: build 🐳`Dockerfile` from the history of your hands-on building process.
 
     VM Ubuntu 20.04
 
@@ -167,11 +167,11 @@ Setting up an environment on a new machine is a tedious task. `Docker Image` can
 
 <br>
 
-### Write a `Dockerfile`
+### Write a 🐳`Dockerfile`
 
-Now exit from the container. Then create a `Dockerfile` to build it.
+Now exit from the container. Then create a 🐳`Dockerfile` to build it.
 
-`Dockerfile`
+🐳`Dockerfile`
 
     FROM ubuntu
 
@@ -187,9 +187,9 @@ Now exit from the container. Then create a `Dockerfile` to build it.
 Now `build .` it!
 Syntax
 
-- `docker build . -t [account]/[image name]`
+- 🐳`Docker build . -t [account]/[image name]`
 
-`docker build .`
+🐳`Docker build .`
 
     Step 1/6 : FROM python:3.6
     3.6: Pulling from library/python
@@ -231,16 +231,16 @@ Syntax
 
 ### Push to the dockr hub
 
-- `docker login`
+- 🐳`Docker login`
   - `Uername:`
   - `Password:`
-- `docker push forest/simple-flask-server`
+- 🐳`Docker push forest/simple-flask-server`
 
 <br>
 
 ### Know your built `image`
 
-Check the version of your `image`: `docker run python:3.6 cat /etc/*release*`
+Check the version of your `image`: 🐳`Docker run python:3.6 cat /etc/*release*`
 
     PRETTY_NAME="Debian GNU/Linux 11 (bullseye)"
     NAME="Debian GNU/Linux"
