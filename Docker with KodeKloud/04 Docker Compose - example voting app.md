@@ -29,62 +29,35 @@ Install 🐳Docker Compose:https://docs.docker.com/compose/install/
 
 [[Top]](#top)
 
+`Clone` the `example-voting-app repo`.
 
+    git clone https://github.com/dockersamples/example-voting-app.git
 
-<br>
+    cd example-voting-app
 
-## <span id='Dockerfile'>🐳Dockerfile</span>
+    ls 
+    ... vote    worker    result ...
 
-[[Top]](#top)
+Build images inside each directory: `vote`, `worker`, and `result`
 
-<br>
+    cd vote
+    docker build . -t voting-app
 
-    docker-compose.yml
+    cd ../worker
+    docker build . -t worker-app
 
-    redis: 
-      container_name: redis
-      image: redis
+    cd ../result
+    docker build . -t result-app
 
-    vote: 
-      container_name: voting-app
-      image: voting-app
-      ports: 
-        - 5000:80
-      links:
-        - redis
+Now write a [`docker-compose.yml`](https://github.com/deep-woods/2022-Docker/blob/main/Docker%20with%20KodeKloud/docker-compose.yml).
 
-    db: 
-      container_name: db
-      image: postgres:9.4
-      environment: 
-        - POSTGRES_HOST_AUTH_METHOD=trust
+    cd ~
+    nano docker-compose.yml
 
-    worker: 
-      container_name: worker-app
-      image: worker-app
-      links:
-        - redis
-        - db
+Now run the `docker-compose.yml` file. 
 
-    result: 
-      container_name: result-app
-      image: result-app
-      ports: 
-        - 5001:80
-      links:
-        - db
+    docker-compose up
 
-
-<br>
-<br>
-
-## <span id=''></span>
-
-[[Top]](#top)
-
-<br>
-
-<br>
 
 <br>
 
@@ -93,15 +66,3 @@ Install 🐳Docker Compose:https://docs.docker.com/compose/install/
 [[Top]](#top)
 
 - kodekloud https://kodekloud.com/courses/docker-for-the-absolute-beginner/
-
-├──
-│ ├──
-│ └──
-├──
-│ ├──
-│ └──
-├──
-├──
-│  
-├──
-└──
