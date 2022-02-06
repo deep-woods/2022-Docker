@@ -1,0 +1,32 @@
+# in Docker-compose 3.x the inter-container network is automatically created. 
+# Meaning, we don't need to manually link a container to others.
+
+version: "3"
+service:
+  redis: 
+    container_name: redis
+    image: redis
+
+  vote: 
+    container_name: voting-app
+    image: voting-app
+    ports: 
+      - 5000:80
+
+  db: 
+    container_name: db
+    image: postgres:9.4
+    environment: 
+      - POSTGRES_USER: postgres
+      - POSTGRES_PASSWORD: password
+#     - POSTGRES_HOST_AUTH_METHOD=trust
+
+  worker: 
+    container_name: worker-app
+    image: worker-app
+
+  result: 
+    container_name: result-app
+    image: result-app
+    ports: 
+      - 5001:80

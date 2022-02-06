@@ -1,32 +1,32 @@
-redis: 
+redis:
   container_name: redis
   image: redis
 
-vote: 
+vote:
   container_name: voting-app
   image: voting-app
-  ports: 
+  ports:
     - 5000:80
   links:
     - redis
 
-db: 
+db:
   container_name: db
   image: postgres:9.4
-  environment: 
+  environment:
     - POSTGRES_HOST_AUTH_METHOD=trust
 
-worker: 
+worker:
   container_name: worker-app
   image: worker-app
   links:
     - redis
     - db
 
-result: 
+result:
   container_name: result-app
   image: result-app
-  ports: 
+  ports:
     - 5001:80
   links:
     - db

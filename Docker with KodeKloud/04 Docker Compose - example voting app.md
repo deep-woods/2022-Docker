@@ -3,7 +3,7 @@
 <br>
 
 [[Install 🐳Docker Compose]](#install)  
-[[🐳Example Voting App ]](#app)  
+[[🐳Example Voting App]](#app)  
 [[🐳Dockerfile]](#Dockerfile)  
 [[References]](#ref)
 
@@ -35,7 +35,7 @@ Install 🐳Docker Compose:https://docs.docker.com/compose/install/
 
     cd example-voting-app
 
-    ls 
+    ls
     ... vote    worker    result ...
 
 Build images inside each directory: `vote`, `worker`, and `result`
@@ -54,10 +54,18 @@ Now write a [`docker-compose.yml`](https://github.com/deep-woods/2022-Docker/blo
     cd ~
     nano docker-compose.yml
 
-Now run the `docker-compose.yml` file. 
+Now run the `docker-compose.yml` file.
 
     docker-compose up
 
+<br>
+
+## <span id=''>🐳 </span>
+
+`postgres` environment variable
+
+- `POSTGRES_USER=postgres`
+- `POSTGRES_PASSWORD=password` to set it in "docker run"
 
 <br>
 
