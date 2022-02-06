@@ -68,24 +68,6 @@ Connect to: `[server IP]:[port num]`
 `Redis`: _Redis is an in-memory data structure store, used as a distributed, in-memory key–value database, cache and message broker, with optional durability. Redis supports different kinds of abstract data structures, such as strings, lists, maps, sets, sorted sets, HyperLogLogs, bitmaps, streams, and spatial indices._ ([Wikipeida](https://en.wikipedia.org/wiki/Redis))
 <br>
 
-<img src="https://github.com/deep-woods/2022-Docker/blob/main/images/VMware%20boot%20failure%2001%20Safe%20recovery%20boot.png" width=600 />
-
-<img src="https://github.com/deep-woods/2022-Docker/blob/main/images/VMware%20boot%20failure%2002%20Get%20gparted.png" width=1000 />
-
-<img src="https://github.com/deep-woods/2022-Docker/blob/main/images/VMware%20boot%20failure%2003%20Repartitioning.png" width=1000 />
-
-<img src="https://github.com/deep-woods/2022-Docker/blob/main/images/VMware%20boot%20failure%2004%20Repartitioning%20completed.png" width=1000 />
-
-<img src="https://github.com/deep-woods/2022-Docker/blob/main/images/Voting-App-01-votingapp-backend.png" width=500 />
-
-<img src="https://github.com/deep-woods/2022-Docker/blob/main/images/Voting-App-01-votingapp.png" width=500 />
-
-<img src="https://github.com/deep-woods/2022-Docker/blob/main/images/Voting-App-02-votingapp-redis-connected.png" width=500 />
-
-<img src="https://github.com/deep-woods/2022-Docker/blob/main/images/Voting-App-05-votingapp-result.png" width=1000 />
-
-
-
 ## <span id=''></span>
 
 [[Top]](#top)
