@@ -2,12 +2,18 @@
 
 <br>
 
+### Resources
+
+Docker Certified Associate Exam Preparation Guide (v1.0.1) https://dockerlabs.collabnix.com/docker/dca.html
+
+<br>
+
 [[Mini project 1 - Example Voting App]](#votingapp)  
-[[Mini project 2 - ]](#)  
-[[Mini project 3 - ]](#)  
-[[Mini project 4 - ]](#)  
-[[Mini project 5 - ]](#)  
-[[Mini project 6 - ]](#)  
+[[Mini project 2 -]](#)  
+[[Mini project 3 -]](#)  
+[[Mini project 4 -]](#)  
+[[Mini project 5 -]](#)  
+[[Mini project 6 -]](#)  
 [[]](#)  
 [[References]](#ref)
 
@@ -17,7 +23,7 @@
 
 [[Top]](#top)
 
-- App used: [Official Docker Samples - example-voting-app](https://github.com/dockersamples/example-voting-app)   
+- App used: [Official Docker Samples - example-voting-app](https://github.com/dockersamples/example-voting-app)
 - [App architecture](https://github.com/dockersamples/example-voting-app#architecture)
 - [`Docker-compose.yml`](https://github.com/deep-woods/2022-Docker/blob/main/Docker%20with%20KodeKloud/docker-compose.yml)
 
