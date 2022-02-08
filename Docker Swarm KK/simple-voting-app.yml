@@ -1,0 +1,41 @@
+version: "3"
+services: 
+  redis :
+    container_name: redis
+    image: redis
+
+  db:
+    container_name: db
+    image: postgres:9.4
+    environment:
+      - POSTGRES_HOST_AUTH_METHOD=trust
+
+  vote:
+    container_name: voting-app
+    image: voting-app
+    ports:
+      - 5000:80
+    links:
+      - redis
+    depends_on:
+      - redis
+
+  worker:
+    container_name: worker-app
+    image: worker-app
+    links:
+      - db
+      - redis
+    depends_on:
+      - db
+      - redis
+
+  result:
+    container_name: result-app
+    image: result-app
+    ports:
+      - 5001:80
+    links:
+      - db
+    depends_on:
+      - db
