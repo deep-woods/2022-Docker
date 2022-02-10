@@ -58,11 +58,34 @@ Install docker
         echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu \
         $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
 
-4.  Start the service and configure permission.
+4.  Install.
+
+        sudo apt-get
+        sudo apt-get install docker-ce docker-ce-cli containerd.io
+
+5.  Start the service and configure permission.
 
         sudo systemctl start docker
         sudo usermod -aG docker "${USER}"
         sudo newgrp docker
+
+6.  Test run.
+
+        docker run docker/whalesay cowsay 'install successful'
+        ____________________
+        < install successful >
+        --------------------
+            \
+            \
+              \
+                            ##        .
+                      ## ## ##       ==
+                  ## ## ## ##      ===
+              /""""""""""""""""___/ ===
+          ~~~ {~~ ~~~~ ~~~ ~~~~ ~~ ~ /  ===- ~~~
+              \______ o          __/
+                \    \        __/
+                  \____\______/
 
 <br>
 
@@ -76,39 +99,106 @@ Install docker
 ### `Swarm Manager`
 
 - `docker swarm init`
-- `docker swarm init --advertise-addr`
+- `docker swarm init --advertise-addr <IP addr>`
+- `docker swarm join --token <TOKEN>`
+- `docker swarm leave --force`
+- `docker swarm join-token manager`
 
       $ docker swarm init
       Error response from daemon: could not choose an IP address to advertise since this system has multiple addresses on different interfaces (10.42.106.6 on eth0 and 172.25.0.93 on eth1) - specify one with --advertise-addr
 
-The above happens because the current host has multiple interfaces and multiple IP addresses - it has two interfaces connected to two separate networks.
+1.  The above happens because the current host has multiple interfaces and multiple IP addresses - it has two interfaces connected to two separate networks.
 
-      $ docker swarm init --advertise-addr 172.25.0.93
-      Swarm initialized: current node (6039ej4zlaajd6rlc3w77l2cs) is now a manager.
+    $ docker swarm init --advertise-addr 172.25.0.93
+    Swarm initialized: current node (6039ej4zlaajd6rlc3w77l2cs) is now a manager.
 
-      To add a worker to this swarm, run the following command:
+    To add a worker to this swarm, run the following command:
 
           docker swarm join --token SWMTKN-1-06vz9ck0q0irqk48ztpn6k5l0p5r0ljo3zrxmlxt3unf3yfmv4-99x4msreqr1298icz6tlecd4h 172.25.0.93:2377
 
-      To add a manager to this swarm, run 'docker swarm join-token manager' and follow the instructions.
+    To add a manager to this swarm, run 'docker swarm join-token manager' and follow the instructions.
 
 In the above, `docker` has successfully initialized a `swarm cluster` with this node as the master node.
 
-After joining some workers, check out the `swarm nodes`.
-
-        docker node ls
-        ID                            HOSTNAME        STATUS    AVAILABILITY   MANAGER STATUS   ENGINE VERSION
-        p5hz0a0twkroz0b4f5fpgg3ik     caleston-lp10   Ready     Active                          20.10.12
-        glp7924bmhvoquj4iwtk80wvd *   devapp01        Ready     Active         Leader           20.10.12
-
 <br>
+
+2. Join some workers, then check out the `swarm nodes`.
 
 ### `Worker node`
 
-1.  Join the node to the `swarm`.
+Join the node to the `swarm`.
 
         docker swarm join --token SWMTKN-1-5uwo54exfrheiu2muli8exlk6yuud3uev3o11quaa6gh4977rj-7wzb3ohunkuoigutziu7wznzr 172.16.239.2:2377
         This node joined a swarm as a worker.
+
+### `Master node`
+
+Now check the `nodes` on the `master`.
+
+        docker node ls
+        ID                            HOSTNAME        STATUS    AVAILABILITY   MANAGER STATUS   ENGINE VERSION
+        p5hz0a0twkroz0b4f5fpgg3ik     willow   Ready     Active                          20.10.12
+        glp7924bmhvoquj4iwtk80wvd *   forest        Ready     Active         Leader           20.10.12
+
+<br>
+
+3. Let's add the other two nodes as master nodes.
+
+- A single swarm cluster can have more than one master nodes.
+- As good practice, `docker` recommends appointing more than one `manager node`.
+
+### `Master node`
+
+        docker swarm join-token manager
+
+        To add a manager to this swarm, run the following command:
+
+        docker swarm join --token SWMTKN-1-3403rk8fzj... 172.16.239.187:2377
+
+### `Worker node`
+
+        docker swarm join --token SWMTKN-1-3403rk8fzj...
+
+        This node joined a swarm as a manager.
+
+### `Master node`
+
+Check the node list. Look at the `MANAGER STATUS`. Note that the origianl leader is labelled as `Leader`, and additionally appointed manager as `Reachable`.
+
+        docker node ls
+        ID                            HOSTNAME        STATUS    AVAILABILITY   MANAGER STATUS   ENGINE VERSION
+        ftvhqd4z99l9y8xq84rs89q0z *   forest          Ready     Active         Leader           20.10.12
+        yay20tf97gnx2gjqx6kngk2ux     willow          Ready     Active         Reachable        20.10.12
+        q60yl44bqsdfcidd07jg8y2q8     willow          Down      Active                          20.10.12
+
+4. Promote a `worker node` to a `manager mode`.
+
+### `Master node`
+
+        docker node promote <worker node name>
+        Node <worker node name> promoted to a manager in the swarm.
+
+5. Update the `hostname` of a node.
+
+### `Worker node`
+
+        hostname <new name>
+
+6. Simulate node failure.
+
+If a `cluster` fails, you cannot perform any more managerial actions, such as maybe adding a new service or adding a new worker. However, the current running services
+will continue to run as it should.
+
+<br>
+
+| Swarm Manager                                    | Worker                           |
+| ------------------------------------------------ | -------------------------------- |
+| `docker swarm init --advertise-addr 172.25.0.93` | `docker swarm join`              |
+| `docker node ls`                                 | Cannot view nodes from worker.   |
+| `docker swarm join-token manger`                 | paste the instruction code here. |
+| `docker node promote <node name>`                |                                  |
+
+<br>
 
 ### Workernode troubleshoots
 
@@ -121,29 +211,21 @@ After joining some workers, check out the `swarm nodes`.
 
         Error response from daemon: rpc error: code = Unavailable desc = connection error: desc = "transport: Error while dialing dial tcp 172.16.239.187:2377: connect: connection refused"
 
+3.  Cannot join the `cluster`.
+
+        docker swarm join --token SWMTKN-1-3403   172.16.239.187:2377
+        Error response from daemon: rpc error: code = Unknown desc = The swarm does not have a leader. It's possible that too few managers are online. Make sure more than half of the managers are online.
+
 <br>
-
-| Swarm Manager                                    | Worker              |
-| ------------------------------------------------ | ------------------- |
-| `docker swarm init --advertise-addr 172.25.0.93` | `docker swarm join` |
-|                                                  |                     |
-|                                                  |                     |
-|                                                  |                     |
-|                                                  |                     |
-|                                                  |                     |
-|                                                  |                     |
-|                                                  |                     |
-|                                                  |                     |
-
 <br>
 
 ### Quiz
 
-1. How many nodes are there?
+1.  How many nodes are there?
 
-   $ docker node ls
-   ID HOSTNAME STATUS AVAILABILITY MANAGER ENGINE VERSION  
-   60rlc3ws \* forest-plane Ready Active Leader 19.03.15
+        $ docker node ls
+        ID HOSTNAME STATUS AVAILABILITY MANAGER ENGINE VERSION
+          60rlc3ws \* forest-plane Ready Active Leader 19.03.15
 
 <br>
 
