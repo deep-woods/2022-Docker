@@ -1,0 +1,22 @@
+version: "3"
+services:
+  redis:
+    image: redis
+
+  db:
+    image: postgres:9.4
+
+  vote:
+    image: dockersamples/examplevotingapp_vote
+    ports:
+      - 5000:80
+    deploy:
+      replicas: 2
+
+  worker:
+    image: dockersamples/examplevotingapp_worker
+
+  result:
+    image: dockersamples/examplevotingapp_result
+    ports:
+      - 5001:80

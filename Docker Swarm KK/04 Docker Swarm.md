@@ -17,7 +17,7 @@
 └──`worker node` (docker host)
 
 - `docker swarm init`: initailise the manager
-  - `--advertise-addr <ip addr>`
+  - `--advertise-addr <ip addr>`: _To put it simply, the `--advertise-addr` is the address other nodes in the Docker swarm use to connect into your node. You need to provide an IP address of your host, or a network interface which Docker will use to lookup your IP address, and a port number which defaults to 2377:_ (Mitchell, 2016)
 - `docker swarm join-token manager`
 - `docker node update --availability drain <node>`: Docker recommends dedicating
   manager nodes for management tasks only in the production environment.
@@ -47,6 +47,8 @@ Install docker
         sudo apt-get update
         sudo apt-get install ca-certificates curl gnupg lsb-release
 
+- `ca-certificates`: _A CA certificate is a digital certificate issued by a certificate authority (CA), so SSL clients (such as web browsers) can use it to verify the SSL certificates sign by this CA. For example, stackoverflow.com uses Let's Encrypt to sign its servers, and SSL certificates send by stackoverflow.com mention they are signed by Let's Encrypt. Your browser contains the CA certificate from Let's Encrypt and so the browser can use that CA certificate to verify the stackoverflow's SSL certificate and make sure you are indeed talking to real server, not man-in-the-middle. https://security.stackexchange.com/a/20833/233126 provides a more detail explanation about how TLS/SSL certificates work._ (Chen, 2020)
+
 2.  Add Docker’s official GPG key:
 
         curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
@@ -60,7 +62,7 @@ Install docker
 
 4.  Install.
 
-        sudo apt-get
+        sudo apt-get update
         sudo apt-get install docker-ce docker-ce-cli containerd.io
 
 5.  Start the service and configure permission.
@@ -284,3 +286,6 @@ Leave the current `swarm`.
 [[Top]](#top)
 
 - kodekloud https://kodekloud.com/courses/docker-swarm-services-stacks-hands-on/
+- Ding-Yi Chen (2020) What is CA certificate, and why do we need it?
+  https://stackoverflow.com/questions/40061263/what-is-ca-certificate-and-why-do-we-need-it
+- Brandon Mitchell (2016) What’s the Docker Swarm “–advertise-addr”? https://boxboat.com/2016/08/17/whats-docker-swarm-advertise-addr/
