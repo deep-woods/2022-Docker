@@ -11,9 +11,9 @@
 
 [[Top]](#top)
 
-`manager node` (docker host)
-├──`worker node` (docker host)
-├── ...
+`manager node` (docker host)  
+├──`worker node` (docker host)  
+├── ...  
 └──`worker node` (docker host)
 
 - `docker swarm init`: initailise the manager
@@ -78,7 +78,7 @@ Install docker
         < install successful >
         --------------------
             \
-            \
+             \
               \
                             ##        .
                       ## ## ##       ==
