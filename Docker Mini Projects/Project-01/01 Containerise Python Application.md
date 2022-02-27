@@ -6,10 +6,10 @@
 
 ### Project 2 - FastAPI app
 
-[[Summary]](#Summary)
-[[`venv`]](#venv)
+[[Summary]](#Summary)  
+[[`venv`]](#venv)  
 [[Prepare Dependencies]](#Dependencies)  
-[[🐳Dockerfile]](#Dockerfile-fastapi)
+[[🐳Dockerfile]](#Dockerfile-fastapi)  
 [[References]](#ref)
 
 <br>

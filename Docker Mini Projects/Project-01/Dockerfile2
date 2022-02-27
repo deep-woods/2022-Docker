@@ -1,0 +1,15 @@
+FROM python:3.8
+
+# Automatically goes to this directory.
+WORKDIR /fastapi-app    
+
+# Copy requirements into WORKDIR above.
+COPY requirements.txt .
+
+# Install dependencies.
+RUN pip install -r requirements.txt
+
+# Copy everything in /app in the local machien into the docker container.
+COPY ./app ./app
+
+CMD ["python", "./app/main.py"]
